@@ -1,6 +1,6 @@
 import * as lab1 from './lab1.mjs';
 
-//TODO: Calling each function in lab1.js 5 times each, passing in different input
+//TODO: Calling each function in lab1.mjs 5 times each, passing in different input
 console.log(lab1.questionOne(["Hello", "good", "weather", "today"])); // returns  and logs[9, false]
 console.log(lab1.questionOne(["I", "love", "CS 546.", "Best class ever."])); // returns and logs [7, false] 
 console.log(lab1.questionOne(["Ths s nrdbl", "grd"])); // returns and logs [0, true]
@@ -26,4 +26,3 @@ console.log(lab1.questionFour('joseph,ball,square,pencil'));  //returns and logs
 console.log(lab1.questionFour('sushmita,bahala,software,student'));// returns and logs ['mitasush','alabah','waresoft','dentstu']
 console.log(lab1.questionFour('baking,cake,needs,practice')); // returns and logs ['ingbak','keca','edsne','ticeprac']
 console.log(lab1.questionFour('explore,newyork,during,spring')); // returns and logs ['loreexp','yorknew','ingdur','ingspr']
-console.log(lab1.questionFour('')); // NoValuesPassed for question Four
