@@ -13,13 +13,14 @@ console.log(lab1.questionTwo({ a: 3, a: 2, c: 1, c: 7 }, { a: 6, b: 5, c: 4, e: 
 console.log(lab1.questionTwo({ a: 6, b: 5, c: 4, e: 3 }, { a: 6, b: 5, c: 4, d: 4, e: 3 })); //returns and logs[ 'd' ]
 console.log(lab1.questionTwo({ a: 2, b: 3, c: 4, d: 5 }, { a: 2, b: 3, c: 4, d: 5})); // returns and logs[] as all the keys are same
 console.log(lab1.questionTwo({ a: 3, b: 2, c: 1, d: 7, f: 8, g: 2 }, { a: 6, b: 5, c: 4, e: 8 })); // returns and logs[ 'd', 'f', 'g', 'e' ]
-
+console.log(lab1.questionTwo( {'1': true, a: 5, '2': 'hi'}, {'3': true, b: 5, '44': "hi", '4': "bye", '5': 8})); // returns ['1', '2', '3', '4', '5', '44', 'a', 'b'] )
 
 console.log(lab1.questionThree([[3,3,3], [3,3,4], [5,4,2]])); // returns and logs{ '0': [ '3.9', 9 ], '1': [ '4.47', 10 ], '2': [ '3.8', 11 ] }
 console.log(lab1.questionThree([[7,5,5], [2,4,3], [8,5,6], [12,12,11]]));   // returns and logs{'0': [12.5, 17], '1': [2.9,9], '2': [14.98,19], '3': [58.66,35]} 
 console.log(lab1.questionThree([[13,24,13],[2,4,4],[5,5,5],[6,6,7]])); // returns and logs{'0': [ '60', 50 ],'1': [ '3.87', 10 ],'2': [ '10.83', 15 ],'3': [ '17.06', 19 ]}
 console.log(lab1.questionThree([[4,4,4],[2,4,4],[5,5,5],[7,7,7]])); // returns and logs{'0': [ '6.93', 12 ], '1': [ '3.87', 10 ], '2': [ '10.83', 15 ], '3': [ '21.22', 21 ] }
 console.log(lab1.questionThree([[3.5,3.5,3.5],[7.5,6.5,6.5],[7.5,8.0,7.5],[6.8,5.2,7.1]])); // returns and logs{'0': [ '5.3', 10.5 ],'1': [ '19.91', 20.5 ], '2': [ '25.38', 23 ], '3': [ '16.73', 19.1 ] }
+console.log(lab1.questionThree([[.75, .75, .75], [1.001, 1.002, 1.001], [7, 8, 9]])); 
 
 console.log(lab1.questionFour('patrick,hill,trees,home'));  // returns and logs ['rickpat', 'llhi', 'eestr', 'meho']
 console.log(lab1.questionFour('joseph,ball,square,pencil'));  //returns and logs ['ephjos', 'llba', 'aresqu', 'cilpen']

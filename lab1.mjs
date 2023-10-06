@@ -57,7 +57,7 @@ export const questionThree = (arr) => {
       area = parseFloat((Math.sqrt(side*((side - a)*(side - b)*(side - c)))).toFixed(2)).toString();
       perimeter = a+b+c;  
     }
-    valueObj[index] = [area, perimeter];
+    valueObj[index] = [area, perimeter.toFixed(2)];
 
   });
   return valueObj; //returns result

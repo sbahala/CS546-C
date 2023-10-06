@@ -73,6 +73,11 @@ try{
 }catch(e){
     console.log(e);
 }
+try{
+    console.log(stringUtils.mashUp('str ', "str"));//returns Lillers Flowy
+}catch(e){
+    console.log(e);
+}
 
 try{
     console.log(stringUtils.mashUp(1, 2));//throws error //Error -- Invalid type of input data where type of String 1 is number and type of String 2 is number
