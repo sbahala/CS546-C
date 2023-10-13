@@ -645,3 +645,292 @@ try{
 ////:[a-zA-Z`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]+:
 //const regex = /:(?!:)[^:]*\S[^:]*:(?!:)|:[^\s:]+:|:\w+:/g;
      //const formatPattern = /^[A-Za-z]{1,5},\s*("?\d+(\.\d{1,2})?"?\|)+[A-Za-z]{1,5},\s*("?\d+(\.\d{1,2})?"?\|)+[A-Za-z]{1,5},\s*("?\d+(\.d{1,2)?.\d{2}$)/;//works for fixed length with 3 prices
+
+ /// my create for lab4
+ 
+ const create = async (
+  eventName, 
+  eventDescription, 
+  eventLocation, 
+  contactEmail, 
+  maxCapacity, 
+  priceOfAdmission, 
+  eventDate, 
+  startTime, 
+  endTime, 
+  publicEvent
+) => {
+  const vallidStringCheck =(val) =>{
+    if(typeof(val) !== 'string' || val.trim() === ""){
+        throw `strings with only spaces are not valid`;
+    }
+}
+  const checkValidEmail = contactEmail => mailRegex.test(contactEmail);
+  const checkValidDate = (eventDate) => {
+    if(!dateRegex.test(eventDate)){
+      return false;
+    }
+    const [month,day,year]=eventDate.split('/').map(Number);
+    const dateObject = new Date(year, month -1, day);
+    return dateObject && dateObject.getMonth()+1 === month && dateObject.getDate() === day && dateObject.getFullYear() === year;
+  };
+  const checkValidStartTime = time => timeRegex.test(time);
+  const timeToMinutes =(time) =>{
+    const[hour,mint]=time.split(":");
+    const minuteStr = mint.slice(0,2);
+    const period = mint.slice(2).toUpperCase();
+    const minute = parseInt(minuteStr,10);  
+    let passedHrs = parseInt(hour,10);
+    if(period === "PM" && passedHrs !== 12) passedHrs += 12;
+    if(period === "AM" && passedHrs === 12) passedHrs = 0;
+
+    return passedHrs * 60 + minute;
+  };
+
+  const checkValidStartEndTime =(startTime,endTime) =>{
+    const startTimeInMinutes = timeToMinutes(startTime);
+    const endTimeInMinutes = timeToMinutes(endTime);
+    return startTimeInMinutes<endTimeInMinutes;
+  };
+
+  const checkEndTimeValidTime = (startTime,endTime) =>{
+    const startTimeInMinutes1 = timeToMinutes(startTime);
+    const endTimeInMinutes1 = timeToMinutes(endTime);
+    if(endTimeInMinutes1<= startTimeInMinutes1){
+      return false;
+    }
+    if(endTimeInMinutes1 - startTimeInMinutes1 <30){
+      return false;
+    }
+    return true;
+  };
+  //const checkEndTimeValidTime //should handle ////The endTime cannot be earlier than the startTime, if it is, the method should throw.
+  //and //The endTime should be at least 30 minutes later than the startTime, if it's not, the method should throw. 
+  if(!eventName ||!eventDescription || !eventLocation || !contactEmail || !maxCapacity  ||priceOfAdmission === undefined ||!eventDate ||!startTime ||!endTime){
+      throw `All fields need to have valid values`;
+    }
+    [eventName,eventDescription,contactEmail, eventDate, startTime, endTime].forEach(val =>{
+      vallidStringCheck(val);
+    });
+    if(eventName.trim().length<5){
+      throw `Error -- Given eventname: ${eventName} cannot be less than 5 characters`;
+    }
+    if(eventDescription.trim().length<5){
+      throw `Error -- Given eventDescription: ${eventDescription} cannot be less than 25 characters`;
+    }
+    if(!checkValidEmail(contactEmail.trim())){
+      throw`Error -- Given email: ${contactEmail} is not in a valid email address format`;
+    }
+    if(!checkValidDate(eventDate.trim())){
+      throw `Error -- Given date: ${eventDate} is not a valid date format`;
+    }
+    if(new Date(eventDate.trim())<= new Date()){
+      throw `Error -- Event date must be only future date`;
+    }
+    if(!checkValidStartTime(startTime.trim())){
+      throw `Error --  startTime: ${startTime} must be a valid time in 12-hour AM/PM format "11:30PM"`;
+    }
+    //The startTime cannot be later than the endTime, if it is, the method should throw.
+    if(!checkValidStartEndTime(startTime.trim(),endTime.trim())){
+      throw `Error -- The startTime: ${startTime} cannot be later than the endTime:${endTime}`;
+
+    }
+    //The endTime must be a valid time in 12-hour AM/PM format "11:30PM":  If it's not in the expected format or not a valid time, the method should throw.
+    if(!checkValidStartTime(endTime.trim())){
+      throw `Error --  endTime: ${endTime} must be a valid time in 12-hour AM/PM format "11:30PM"`;
+    }
+    //The endTime cannot be earlier than the startTime, if it is, the method should throw.
+    if(!checkEndTimeValidTime(startTime.trim(),endTime.trim())){
+      throw `Error --  endTime: ${endTime} mcannot be earlier than the startTime ${startTime}`;
+    }
+    //The endTime should be at least 30 minutes later than the startTime, if it's not, the method should throw. 
+    if(!checkEndTimeValidTime(startTime.trim(),endTime.trim())){
+      throw `Error -- Given End time: ${endTime} hould be at least 30 minutes later than the Start time: ${startTime}`;
+    }
+    if(typeof(publicEvent)!== 'boolean'){
+      throw `Error -- Given publicevent : ${publicEvent} is not of type boolean`;
+    }
+    //if maxCapacity, priceOfAdmission are not the expected type (numbers), the method should throw.
+    if(typeof(maxCapacity) !== 'number'|| maxCapacity<=0 ||!Number.isInteger(maxCapacity)){
+      throw `Error -- given maxCapacity :${maxCapacity} is not of type Number`;
+    }
+    if(typeof(priceOfAdmission)!== 'number' || priceOfAdmission<0 ){
+      throw `Error -- given Price of Admission: ${priceOfAdmission} is not of type Number`;
+    }
+    if(!Number.isInteger(priceOfAdmission) && !Number.isInteger(priceOfAdmission*100)){
+      throw `Error -- given Price of Admission: ${priceOfAdmission} should have atmost 2 decimal places`;
+    }
+    //If eventLocation is not an object,  the method should throw. 
+    if(typeof(eventLocation) !== 'object' || eventLocation=== null || Array.isArray(eventLocation)){
+      throw `Error -- Eventlocation provided: ${eventLocation} is not of object type`;
+    }
+    const {streetAddress,city,state,zip} = eventLocation;
+    //If eventLocation.streetAddress, eventLocation.city,  eventLocation.state,  eventLocation.zip  are not supplied, the method should throw.
+    if(!streetAddress || !city || !state || !zip){
+      throw `Error -- All properties (streetAddress,city,state,zip) of eventlocation must be supplied`;
+    }
+    //If eventLocation.streetAddress, eventLocation.city, eventLocation.state, eventLocation.zip  are not all valid strings, the method should throw.
+    if(typeof(streetAddress)!== 'string' || typeof(city)!== 'string'|| typeof(state)!=='string'|| typeof(zip)!=='string'){
+      throw `Error -- Some properties (streetAddress,city,state,zip) of eventlocation are not string type`;
+    }
+    //If eventLocation.streetAddress, is less than 3 characters, the method should throw.
+    if(streetAddress.trim().length<3){
+      throw `Error -- given streetAddress: ${streetAddress.trim()} is less than 3 characters`;
+    }
+    //If eventLocation.city, is less than 3 characters, the method should throw. 
+    if(city.trim().length<3){
+      throw `Error -- given city: ${city.trim()} is less than 3 characters`;
+    }
+    //eventLocation.state, Must be a valid two character state abbreviation "NY", "NJ" etc..
+    if(!/^[A-Z]{2}$/.test(state.trim())){
+      throw `Error -- given state: ${state.trim()} is not valid instead it must be a valid two character state abbreviation "NY", "NJ" etc`;  
+    }
+    //If eventLocation.zip, is not a string that contains 5 numbers, the method should throw. (only 5 digit zip but represented as a string, because leading 0's are valid in zip codes, yet JS drops leading 0's)
+    if(!/^\d{5}$/.test(zip.trim())){
+      throw `Error -- Invalid zip code:${zip}`;
+    }
+    return{
+      eventName: eventName.trim(), 
+      description: eventDescription.trim(), 
+      eventLocation:{
+        streetAddress: streetAddress.trim(),
+        city: city.trim(),
+        state: state.trim(),
+        zip: zip.trim()
+      }, 
+      contactEmail: contactEmail.trim(), 
+      maxCapacity,
+      priceOfAdmission, 
+      eventDate: eventDate.trim(), 
+      startTime: startTime.trim(), 
+      endTime: endTime.trim(), 
+      publicEvent
+    }
+  };
+
+////Mongo db --app.js
+
+/*
+    1. Create a event of your choice.
+    2. Log the newly created event. (Just that event, not all events)
+    3. Create another event of your choice.
+    4. Query all events, and log them all
+    5. Create the 3rd event of your choice.
+    6. Log the newly created 3rd event. (Just that event, not all events)
+    7. Rename the first event
+    8. Log the first event with the updated name. 
+    9. Remove the second event you created.
+    10. Query all events, and log them all
+    11. Try to create an event with bad input parameters to make sure it throws errors.
+    12. Try to remove an event that does not exist to make sure it throws errors.
+    13. Try to rename an event that does not exist to make sure it throws errors.
+    14. Try to rename an event passing in invalid data for the newEventName parameter to make sure it throws errors.
+    15. Try getting an event by ID that does not exist to make sure it throws errors.
+*/
+
+//import * as events from "./events.js";
+import * as events from './data/events.js';
+import { dbConnection,closeConnection } from "./config/mongoConnection.js"
+
+//comment it and check for other functions as it will drop your table
+const db = await dbConnection();
+await db.dropDatabase();
+
+async function main(){
+    let patrickBBQ,aidenBday,juniperSkyReunion
+    //1.Create a event of your choice.
+    try{
+        patrickBBQ = await events.create("Patrick's Big End of Summer BBQ","Come join us for our yearly end of summer bbq!",{streetAddress: "1 Castle Point Terrace", city: "Hoboken", state: "NJ", zip: "07030"}, "abc-@mail.com",30,0,"08/25/2024","2:00PM","8:00PM",false);
+        console.log(patrickBBQ);//2. Log the newly created event. (Just that event, not all events)
+    }catch(e){
+    console.log(e);
+    }
+    //3.Create another event of your choice.
+    try{
+        aidenBday = await events.create("Aiden's Birthday Bash","Aiden turns 5 and you're all invited!",{streetAddress: "2 Castle Point Terrace", city: "Hoboken", state: "NJ", zip: "07030"}, "ahill@stevens.edu",15,0,"09/04/2024","1:00PM","4:00PM",false);
+    }catch(e){
+    console.log(e);
+    }
+    //4.Query all events, and log them all
+    try{
+        const allEvents = await events.getAll();
+        console.log(allEvents);
+    }catch(e){
+        console.log(e);
+    }
+    //5.Create the 3rd event of your choice.
+    try{
+        juniperSkyReunion = await events.create("Juniper Sky reunion concert!","The boys of Juniper Sky reunite for a one night only show at The Chance Theater in Poughkeepsie NY!",{streetAddress: "6 Crannell St", city: "Poughkeepsie", state: "NY", zip: "12601"}, "js@juniperskyrocks.com",900,25,"01/25/2024","8:00PM","10:00PM",true);
+        console.log(juniperSkyReunion);//6.Log the newly created 3rd event. (Just that event, not all events)
+    }catch(e){
+    console.log(e);
+    }
+    //7.Rename the first event
+    try{
+        const renameAiden = await events.rename(patrickBBQ._id,"Patrick's BBQ");
+        console.log(renameAiden);//{eventName: "Aiden's Birthday Bash", deleted: true}////8.Log the first event with the updated name. 
+    }catch(e){
+        console.log(e);
+    }
+    //7.Rename the first event
+    try{
+        const renameAiden = await events.rename(patrickBBQ._id,"Patrick's BBQ");
+        console.log(renameAiden);//{eventName: "Aiden's Birthday Bash", deleted: true}////8.Log the first event with the updated name. 
+    }catch(e){
+        console.log(e);
+    }
+    //9.Remove the second event you created.
+    try{
+        const removeEvent = await events.remove(aidenBday._id);
+        console.log(removeEvent);//{eventName: "Aiden's Birthday Bash", deleted: true}
+    }catch(e){
+        console.log(e);
+    }
+    // 10.Query all events, and log them all
+    try{
+        const allEvents = await events.getAll();
+        console.log(allEvents);
+    }catch(e){
+        console.log(e);
+    }
+    //11.Try to create an event with bad input parameters to make sure it throws errors.
+    try{
+        const patrickBBQ1 = await events.create("Patrick's Big End of Summer BBQ","Come join us for our yearly end of summer bbq!",{streetAddress: "1 Castle Point Terrace", city: "Hoboken", state: "NJ", zip: "07030"}, "phill@stevens.edu",30,0,"8/25/2024","2:00PM","8:00PM",false);
+        console.log(patrickBBQ1);
+    }catch(e){
+    console.log(e);
+    }
+    //12.Try to remove an event that does not exist to make sure it throws errors.
+    try{
+        const allEvents = await events.remove(aidenBday._id);
+        console.log(allEvents);
+    }catch(e){
+        console.log(e);
+    }
+    //13.Try to rename an event that does not exist to make sure it throws errors.
+    try{
+        const tryRename = await events.rename(aidenBday._id,"Aiden's 5th Birthday Bash");
+        console.log(tryRename);
+    }catch(e){
+        console.log(e);
+    }
+    //14.Try to rename an event passing in invalid data for the newEventName parameter to make sure it throws errors.
+    try{
+        const tryRenameInvalid = await events.rename(juniperSkyReunion._id,"123");
+        console.log(tryRenameInvalid);
+    }catch(e){
+        console.log(e);
+    }
+    //15.Try getting an event by ID that does not exist to make sure it throws errors.
+    try{
+        const getEvent = await events.get(aidenBday._id);//do we have to get the id and return
+        console.log(getEvent);
+    }catch(e){
+        console.log(e);
+    }
+await closeConnection();
+console.log('Done!');
+
+
+}
+main();
