@@ -82,7 +82,7 @@ async function main(){
     }
     //11.Try to create an event with bad input parameters to make sure it throws errors.
     try{
-        const patrickBBQ1 = await events.create("Patrick's Big End of Summer BBQ","Come join us for our yearly end of summer bbq!",{streetAddress: "1 Castle Point Terrace", city: "Hoboken", state: "nj", zip: "07030"}, "phill@stevens.edu",30,25.1230,"10/11/2024","08:00PM","11:45PM",false);
+        const patrickBBQ1 = await events.create("Patrick's Big End of Summer BBQ","Come join us for our yearly end of summer bbq!",{streetAddress: "1 Castle Point Terrace", city: "Hoboken", state: "nj", zip: "07030"}, "phill@stevens.edu",30,25.12,"10/11/2023","08:00PM","11:45PM",false);
         console.log(patrickBBQ1);//Error --  Given startTime: 08:00PM for date : 10/11/2023 has already passed
     }catch(e){
     console.log(e);
