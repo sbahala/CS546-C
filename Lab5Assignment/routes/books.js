@@ -10,7 +10,7 @@ import helpers from '../helpers.js';
 router.route('/').get(async(req,res) =>{
     try{
         const bookData = await getAllBook();
-        res.json(bookData);
+        return res.json(bookData);
 
     }catch(e){
         return res.status(500).send(e);
@@ -22,7 +22,7 @@ router.route('/:id').get(async(req,res) =>{
     try{
         req.params.id = helpers.checkBookID(req.params.id);
         const bookDataByID = await getBookById(req.params.id);
-        res.json(bookDataByID);
+        return res.json(bookDataByID);
     }catch(e){
         if(e === 'Error -- Book Not Found!'){
             return res.status(404).json(e);

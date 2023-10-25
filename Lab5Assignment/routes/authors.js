@@ -11,7 +11,7 @@ import helpers from '../helpers.js';
 router.route('/').get(async(req,res) =>{
     try{
         const authorData = await getAllAuthor();
-        res.json(authorData);
+        return res.json(authorData);
 
     }catch(e){
         return res.status(500).send(e);
@@ -23,7 +23,7 @@ router.route('/:id').get(async(req,res) =>{
     try{
         req.params.id = helpers.checkAuthorID(req.params.id);
         const authorDataByID = await getAuthorById(req.params.id);
-        res.json(authorDataByID);
+        return res.json(authorDataByID);
     }catch(e){
         if(e === 'Error -- Author Not Found!'){
             return res.status(404).json(e);

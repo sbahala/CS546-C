@@ -48,10 +48,10 @@ const getAuthorById = async (id) => {
         }   
     });
     if(!requiredAuthorData){
-        throw `Error -- Author Not Found!`;
+        throw 'Error -- Author Not Found!';
     }  
     if(JSON.stringify(requiredAuthorData)=== '{}'){
-        throw `Error -- Author Not Found!`;
+        throw 'Error -- Author Not Found!';
     }
     return requiredAuthorData;
 };
@@ -75,10 +75,10 @@ const getBookById = async (id) => {
         }      
     });
     if(!requiredBookData){
-        throw `Error -- Book Not Found!`;
+        throw 'Error -- Book Not Found!';
     }
     if(JSON.stringify(requiredBookData)=== '{}'){
-        throw `Error -- Book Not Found!`;
+        throw 'Error -- Book Not Found!';
     } 
     return requiredBookData;
 };
