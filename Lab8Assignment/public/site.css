@@ -1,0 +1,106 @@
+/*This file should have 10 CSS rulesets */
+body{
+    width: auto;
+    max-width: 960px;
+    margin: auto;
+    font-family: "Roboto";
+    /*background-color: blueviolet;
+    padding: 1em;*/
+    background-image: url('galaxy.png');
+
+}
+ul li{
+    list-style-type: none;
+    margin-top: 1em;
+    text-decoration: none;
+    padding: 5px;
+
+}
+
+li{
+    color: white;
+}
+h1{
+    color: white;
+}
+p{
+    color: white;
+}
+
+h2{
+    color: white;
+}
+label{
+    margin-top: 1em;
+    color: white;
+}
+input{
+    margin-top: 1em;
+    width: 400px;
+    border-radius: 500px;
+    padding: 1em;
+    border-color: antiquewhite;
+}
+.submitBtn{
+    margin-top: 1em;
+    background-color: bisque;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 500px;
+}
+.submitBtn:hover{
+    background-color: cyan;
+    border-radius: 500px;
+}
+.description{
+    text-align: justify;
+    margin-top: 10px;
+}
+ul.comicName{
+    font-family: cursive;
+}
+.errorPara{
+    text-align: center;
+    font-size: 100 px;
+    font-weight: bold;
+}
+.anotherSearch{
+    display: inline-block;
+    background-color:  bisque;
+    color: rgb(15, 14, 14);
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.anotherSearch:hover{
+    background-color: cyan;
+}
+li{
+    background-color: rgba(149 167 167 / 51%);
+    border: 1px solid black;
+    margin-bottom: 5px;
+    padding: 5px;
+
+}
+ol li:hover{
+    background-color: rgba(149 167 167 / 51%);
+    border-color: white;
+
+}
+img{
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease,box-shadow 0.3s ease;
+    border: 3px solid #f8f8f8;
+    z-index: 1;
+}
+img:hover{
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.7);
+}

@@ -1,0 +1,10 @@
+{{!
+You can use this template to render any errors on your site if you wish
+}}
+{{#if searchPage}}
+    <p class="errorPara">{{code}}:{{description}}</p>
+    {{!<p class="errorRedirect" href="/">Make another search</p>}}
+{{else}}
+    <p class="errorPara">{{code}}:{{description}}</p>
+
+{{/if}}
