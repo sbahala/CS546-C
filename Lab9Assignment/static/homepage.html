@@ -1,0 +1,47 @@
+<!-- 
+
+A header tag, with an h1 naming your site, with a title for your page
+A footer with your name, student ID, and any other info about yourself you wish to include
+A single ordered list with an id of palindromes. 
+
+Your page will have a form with the following:
+
+
+An input with type of text and with the name palindrome_input and id attribute value of "palindrome_input"
+A buttom to submit the form (make sure this is a button and not an input!)
+
+A button to submit the form
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Palindrome/Prime Checker</title>
+	<link rel='stylesheet' href='./public/css/main.css' >
+
+</head>
+
+<body>
+    <main>
+        <header><h1>Palindrome/Prime Checker</h1></header>
+        <div class="container">
+        <p id="error" class="error" hidden>I'm an error. I will change through Client-Side JS</p>
+        <br>
+        <form id = "palindromeForm" method="post">
+            <input type = "text" name ="palindrome_input" id ="palindrome_input" placeholder="Enter text here">
+            <button type ="submit">Submit</button>
+        </form>
+        <ol id ="palindromes">
+        </ol>
+    </div>
+    </main>
+    <footer>Name: Sushmita Bahala &nbsp; Student ID:20015641</footer>
+    <script src="/public/js/main.js"></script>
+       
+
+</body>
+
+</html>

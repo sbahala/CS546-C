@@ -1,0 +1,93 @@
+/*
+You will style your page using at least 10 CSS selectors for general CSS styling. You will place the CSS in its own file. 
+*/
+
+.prime{
+    color:#00ff00;
+}
+.not-prime{
+    color:#ff0000;
+}
+html{
+    height: 100%;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('Palindrome.jpeg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-height: 100vh;
+}
+header h1{
+    text-align: center;
+    color:#4d2182;
+}
+ol{
+    list-style-type: number;
+    padding: 0;
+    width: 100%;
+}
+ol li{
+    margin-bottom: 5px;
+}
+ol li::marker{
+    color: black;
+
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 1em;
+}
+form{
+    margin-top: 1em;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+form input[type="text"],form button{
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.container{
+    border: 2px solid #e6e9e9;
+    padding: 20px;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0px 0px 10px rgba(36, 36, 36, 0.1);
+    background-color: #a9a9d2;
+    border-radius: 8px;
+    overflow: auto;
+}
+header h1{
+    text-align: center;
+    margin: 1em 0;
+}
+.error{
+    color: white;
+    text-align: center;
+    padding: 10px;
+    max-width: 200px;
+    background-color: red;
+}
+
+footer{
+    color:#4d2182;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    box-sizing: border-box;
+    font-weight: bold;
+    line-height: 1.5;
+    padding: 20px 0;
+
+}
