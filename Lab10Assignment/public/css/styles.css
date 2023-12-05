@@ -1,0 +1,279 @@
+/* You will create a CSS stylesheet in /public/css/styles.css; this file should have at least 5 rulesets.  You will need to utilize all 5 rulesets on each of the pages (not every page has to use all 5 rulesets each but all 5 rulesets must be utilized by the various pages in your application).  So you can have some rulesets for one page, some for another page but there needs to be at least 5 total rulesets that are used between all the pages.  */
+
+
+
+html,body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100vw;
+    overflow-x: hidden;
+}
+body{
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    background-image: url('background.jpeg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100vh;
+}
+body.login-page {
+    background-image: url('background.jpeg');
+    background-repeat: no-repeat;
+}
+body.not-login-page {
+    background-image: url('Palindrome.jpeg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding-left: 10%;
+    justify-content: flex-start;
+
+}
+.container{
+    border: 2px solid #e6e9e9;
+    padding: 20px;
+    margin: 20px ;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20%;
+    max-width: 600px;
+    box-shadow: 0px 0px 10px rgba(36, 36, 36, 0.1);
+    background-color: #a9a9d2;
+    border-radius: 8px;
+    overflow: auto;
+    margin-right: auto;
+    transform: translateX(0);
+}
+h1{
+    color: #5953d4;
+}
+a{
+    color: #5953d4;
+}
+#mainbody{
+    width: 100%;
+    max-width: 1500px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 80px;
+    text-align: center;
+    justify-content: center;
+    margin-left: 10%;
+    margin-right: auto;
+    transform: translateX(-40%);
+}
+header {
+    background: #50b302;
+    color: #e4edb4;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #5f3ab4 3px solid;
+}
+header a{
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+form{
+    max-width: 300px;
+    margin:20px auto;
+    background:  #6cd1e2;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.error{
+    color: white;
+    text-align: center;
+    padding: 10px;
+    max-width: 200px;
+    background-color: red;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select{
+    width:100%;
+    padding:10px;
+    margin-bottom: 15px;
+    border:1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+
+
+}
+input[type="submit"]{
+    width: 100px;
+    padding: 10px;
+    border:none;
+    border-radius: 4px;
+}
+
+input[type="submit"]:hover{
+    background: #e4edb6;
+}
+
+.protected-page h1,
+.admin-page h1 {
+    color:#4953a4;
+
+}
+
+.protected-page,.admin-page{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    height: 100vh;
+    background-image: url('Palindrome.jpeg') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    padding-left: 10%;
+}
+.protected-page h1,.admin-page h1{
+    margin-bottom: 0.5em;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-left: 0;
+}
+
+.protected-page p,.admin-page p{
+    font-size: 1.2em;
+    max-width: 800px;
+    margin-left: 0;
+
+}
+
+.protected-page a,.admin-page a{
+    display: inline-block;
+    margin-left: 0;
+    margin-top: 1em;
+    padding: 15px;
+    background-color: rgba(0,0,0,0.7);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.protected-page a:hover,.admin-page a:hover{
+    background-color: #5f3ab4;
+}
+
+
+.register-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    color:white;
+    padding: 2%;
+}
+.register-page h1{
+    margin-bottom: 1em;
+    font-size:2.5 em;
+    color:white;
+    text-shadow: 2px 2px 4 px rgba(0,0,0,0.5);
+    transform: translate(150%);
+
+}
+.register-page form{
+    width:90%;
+    max-width:400px;
+    background-color: rgba(255,255,255,0.9);
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 4px, 8px rgba(0,0,0,0.1);
+    margin-bottom: 1em;
+    transform: translateX(50%);
+}
+.register-page label{
+    display:block;
+    margin-top: 0.5em;
+    color:#333;
+}
+.register-page input[type="text"],
+.register-page input[type="email"],
+.register-page input[type="password"],
+.register-page select{
+    width:100%;
+    padding: 0.5em;
+    margin-top: 0.5 em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.register-page input[type="submit"]{
+    width: auto;
+    padding: 10px 20px;
+    margin-top: 1 em;
+    background:#5f3ab4;
+    color: white;
+    border:none;
+    border-radius: 4px;
+    cursor:pointer;
+}
+.register-page input[type="submit"]:hover{
+    background: #7d5bbe;
+}
+.register-page input[type="submit"]:hover{
+    background: #7d5bbe;
+}
+.register-page a{
+    color: white;
+    text-decoration: none;
+    margin-top: 1 em;
+    transform: translateX(50%);
+    text-decoration: underline;
+}
+.register-page a:hiver{
+    text-decoration: underline;
+}
+#error-container{
+    display: none;
+}
+#error-container:not(:empty){
+    display: block;
+}
+
+#error-container{
+    color:red;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ff0000;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0px 0px 10px rgba(255,0,0,0.2);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+.errorPara{
+    font-size: 1.5em;
+    color:#c03434;
+    background-color: #100f0f0d;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ffcccc;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    max-width: 80%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position:absolute;
+    top :50px;
+    left:50%;
+    transform: translateX(-50%);
+}

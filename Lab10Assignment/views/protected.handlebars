@@ -1,0 +1,14 @@
+{{!--
+
+If the user is logged in , and 'GET /protected' endpoint is called, you will render this view based on the specs.
+
+--}}
+<div class="not-login-page protected-page">
+<h1>Welcome to the Protected Page</h1>
+<div id = "error-container">{{#if error}}{{error}}{{/if}}</div>
+<p>Welcome {{firstName}} {{lastName}}, the time is now:{{currentTime}}. Your role in the system is :{{role}}.</p>
+{{#if isAdmin}}
+<a href="/admin">Admin Page</a>
+{{/if}}
+<a href="/logout">Logout</a>
+</div>

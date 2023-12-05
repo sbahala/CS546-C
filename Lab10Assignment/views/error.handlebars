@@ -1,0 +1,15 @@
+{{!--
+
+You can use this if they try to access a route that they should not be able to. You will redirect them here. For
+example, if they go to /protected without being logged in, or they try to access /admin without beinging logged in or
+they are not an admin user.
+
+--}}
+
+{{#if searchPage}}
+    <p class="errorPara">{{code}}:{{description}}</p>
+    {{!<p class="errorRedirect" href="/">Make another search</p>}}
+{{else}}
+    <p class="errorPara">{{code}}:{{description}}</p>
+
+{{/if}}
