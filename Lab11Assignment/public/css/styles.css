@@ -1,0 +1,122 @@
+/*
+You must include 10 CSS rules that aply to your application
+*/
+
+body, h1, h2, h3, p, ul, li, figure {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: black;
+    background-color: whitesmoke;
+    margin: 0;
+    padding: 0;
+}
+.wrapper{
+    max-width: 960px;
+    margin: 2px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0,0.1);
+}
+
+header{
+    background:#2993dd;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+header h1{
+    margin: 0;
+}
+
+form#searchShows{
+    margin-bottom: 20px;
+}
+form#showShows label{
+    margin-right: 10px;
+}
+form#searchShows input[type="text"]{
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+form#searchShows button{
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    color: white;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+form#searchShows button:hover{
+    background-color: #4cae4c;
+}
+
+#tvShowList{
+    list-style: none;
+    padding: 0;
+}
+#tvShowList li{
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+#tvShowList li a{
+    text-decoration: none;
+    color: #0275d8;
+}
+#tvShowList li a:hover{
+    text-decoration: underline;
+}
+#showDetails img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+#showDetails h1{
+    margin-top: 20px;
+
+}
+#showDetails dl{
+    margin-top: 20px;
+}
+#showDetails dt{
+    font-weight: bold;
+    margin-top: 10px;
+}
+#showDetails dd{
+    margin-left: 20px;
+}
+
+footer{
+    text-align: center;
+    padding: 20px;
+    background:#333;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#rootLink{
+    /*display:block;*/
+    margin-top: 20px;
+    text-align: center;
+    color: #0275d8;
+    text-decoration: none;
+}
+#rootLink:hover{
+    text-decoration: underline;
+}
+
+#myErrors{
+    color:red
+}

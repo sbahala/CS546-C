@@ -1,0 +1,34 @@
+ <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TV Maze - Your Guide to Shows</title>
+        <link rel='stylesheet' href='./public/css/styles.css' >
+    </head>
+    <body>
+        <div class="wrapper" id="page">
+            <header>
+                <h1>TV Maze - Your Guide to Shows</h1>
+            </header>
+            <form id="searchShows">
+                <label for="show_search_term">Search Shows:</label>
+                <input type="text" id="show_search_term" name ="show_search_term" placeholder="Search for a TV Show">
+                <button type="submit" id ="submitBtn">Search</button>
+                <div id="myErrors" hidden></div>
+            </form>
+            <div id ="results" hidden>
+            <ul id="tvShowList" hidden></ul>
+    
+            <div id="showDetails" hidden></div>
+            </div>
+            <a href="/" id="rootLink" hidden>Back to All Shows</a>
+            
+        </div>
+        <footer>
+            <p>Sushmita Bahala - CWID-20015641</p>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="/public/js/main.js"></script>
+    </body>
+    </html>
